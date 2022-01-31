@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
+//The main method that executes the calculator app
 void main(){
   runApp(Calculator());
 }
@@ -19,6 +20,7 @@ class Calculator extends StatelessWidget {
   }
 }
 
+//Stateful widget that is used to execute operations and change the state of the app
 class SimpleCalculator extends StatefulWidget {
   const SimpleCalculator({Key? key}) : super(key: key);
 
@@ -34,11 +36,14 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
   double equationFontSize = 38.0;
   double resultFontSize = 48.0;
 
+  //executes when user clicks on button for state change
   buttonPressed(String buttonText){
     setState(() {
       //do calculations
     });
   }
+
+  //the method used to build all buttons dynamically, takes in text, height and color
   Widget buildButton(String buttonText, double buttonHeight, Color buttonColor){
     return Container(
       decoration: BoxDecoration(
@@ -74,6 +79,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         children: <Widget>[
 
 
+          //Container that displays the user input
           Container(
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
@@ -81,19 +87,27 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           ),
 
 
+          //Container that displays the result
           Container(
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.fromLTRB(10, 30, 10, 0),
             child: Text(result, style: TextStyle(fontSize: resultFontSize),),
           ),
+
+          //Divider between the display and the buttons
           const Expanded(
             child: Divider(),
           ),
+
+          //rows that display all buttons
           Row(
+            //aligns the main axis in the center
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(
+                //sized box covers the 75% of the screen to leave space to other buttons
                 width: MediaQuery.of(context).size.width * .75,
+                //contains the table with operation buttons in each row
                 child: Table(
                   children: [
                     TableRow(
@@ -140,6 +154,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.25,
+                //contains the table with the rest of the buttons for operations
                 child: Table(
                   children: [
                     TableRow(
